@@ -29,12 +29,10 @@ const Body = () => {
     }
   };
 
-  // Shimmer Effect before loading
-  if (listOfRestaurants.length === 0) {
-    return <Shimmer />;
-  }
-
-  return (
+  // Shimmer Effect before loading (conditional rendering)
+  return listOfRestaurants.length === 0 ? (
+    <Shimmer />
+  ) : (
     <div className="body">
       <div className="filter">
         <button
