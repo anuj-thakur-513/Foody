@@ -60,12 +60,20 @@
   border-radius: 20px;
 }
 
+/* Search and Filter Div */
+.filter {
+  display: flex;
+}
+
 .search {
-  padding: 20px;
+  margin: 20px;
+}
+
+.top-rated {
+  margin: 20px;
 }
 
 .filter-btn {
-  margin: 10px;
   cursor: pointer;
 }
 
