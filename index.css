@@ -119,3 +119,9 @@
     left: 100%;
   }
 }
+
+/* User Card */
+.user-card {
+  padding: 10px;
+  border: 1px solid black;
+}
