@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, { withPromotedLabel } from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import { RESTAURANT_API } from "../utils/constants";
 import { Link } from "react-router-dom";
@@ -11,6 +11,8 @@ const Body = () => {
   const [filteredRestaurant, setFilteredRestaurant] = useState([]);
 
   const [searchText, setSearchText] = useState("");
+
+  const RestaurantCardPromoted = withPromotedLabel(RestaurantCard);
 
   useEffect(() => {
     fetchData();
@@ -87,13 +89,17 @@ const Body = () => {
           </button>
         </div>
       </div>
-      <div className="flex flex-wrap px-20">
+      <div className="flex flex-wrap px-48">
         {filteredRestaurant.map((restaurant) => (
           <Link
             key={restaurant?.info.id}
             to={"/restaurant/" + restaurant?.info.id}
           >
-            <RestaurantCard resData={restaurant} />
+            {restaurant.info.avgRating >= 4.4 ? (
+              <RestaurantCardPromoted resData={restaurant} />
+            ) : (
+              <RestaurantCard resData={restaurant} />
+            )}
           </Link>
         ))}
       </div>
