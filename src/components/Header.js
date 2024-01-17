@@ -1,15 +1,19 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { LOGO_URL } from "../utils/constants";
+import UserContext from "../utils/UserContext";
 
 const Header = () => {
   const [loginButton, setLoginButton] = useState(false);
+
+  const data = useContext(UserContext);
+
   const loginClickListener = () => {
     setLoginButton(!loginButton);
   };
 
   return (
-    <div className="flex justify-between bg-pink-50">
+    <div className="flex justify-between shadow-md">
       <div className="logo-container">
         <img className="w-28" src={LOGO_URL} />
       </div>
@@ -33,6 +37,7 @@ const Header = () => {
           <button className="px-4" onClick={loginClickListener}>
             {loginButton === false ? "Login" : "Logout"}
           </button>
+          <li className="px-4 font-semibold">{data.loggedInUser}</li>
         </ul>
       </div>
     </div>

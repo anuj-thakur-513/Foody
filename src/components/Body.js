@@ -1,9 +1,10 @@
-import { useState, useEffect } from "react";
+import { useContext, useState, useEffect } from "react";
 import RestaurantCard, { withPromotedLabel } from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import { RESTAURANT_API } from "../utils/constants";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/UserContext";
 
 const Body = () => {
   // local state variable
@@ -17,6 +18,8 @@ const Body = () => {
   useEffect(() => {
     fetchData();
   }, []);
+
+  const data = useContext(UserContext);
 
   const fetchData = async () => {
     const data = await fetch(RESTAURANT_API);
@@ -67,7 +70,7 @@ const Body = () => {
         <div>
           <input
             type="text"
-            className="p-2 border rounded-md py-1"
+            className="px-2 py-1 border rounded-md"
             value={searchText}
             onChange={(e) => {
               setSearchText(e.target.value);
@@ -80,13 +83,21 @@ const Body = () => {
             Search
           </button>
         </div>
-        <div className="">
+        <div>
           <button
             className="px-4 py-1 mx-2 bg-green-100 rounded-lg items-end"
             onClick={handleFilterClick}
           >
             Top Rated Restaurants
           </button>
+          <label className="ml-10">Username:</label>
+          <input
+            className="mx-2 px-2 py-1 border rounded-md"
+            value={data.loggedInUser}
+            onChange={(e) => {
+              data.setUsername(e.target.value);
+            }}
+          ></input>
         </div>
       </div>
       <div className="flex flex-wrap px-48">

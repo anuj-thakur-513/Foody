@@ -1,8 +1,6 @@
 import { CDN_URL } from "../utils/constants";
 
-const RestaurantCard = (props) => {
-  const { resData } = props;
-
+const RestaurantCard = ({ resData }) => {
   const { name, cloudinaryImageId, cuisines, costForTwo, avgRating } =
     resData?.info;
 
@@ -36,8 +34,8 @@ const RestaurantCard = (props) => {
 export const withPromotedLabel = (RestaurantCard) => {
   return (props) => {
     return (
-      <div>
-        <label className="absolute z-10 bg-red-400 text-white mx-2 px-2 py-1 rounded">
+      <div className="group">
+        <label className="absolute z-10 bg-red-500 text-white mx-2 px-2 py-1 rounded group-hover:opacity-0">
           Promoted
         </label>
         {/* Destructuring the props because we are sending resData and Prototype, 
