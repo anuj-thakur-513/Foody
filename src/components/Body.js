@@ -1,6 +1,6 @@
 import { useContext, useState, useEffect } from "react";
 import RestaurantCard, { withPromotedLabel } from "./RestaurantCard";
-import Shimmer from "./Shimmer";
+import Loading from "./Loading";
 import { RESTAURANT_API } from "../utils/constants";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
@@ -63,7 +63,7 @@ const Body = () => {
 
   // Shimmer Effect before loading (conditional rendering)
   return listOfRestaurants.length === 0 ? (
-    <Shimmer />
+    <Loading />
   ) : (
     <div className="body">
       <div className="flex m-2 items-center px-10 py-2">

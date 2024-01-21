@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useState } from "react";
-import Shimmer from "./Shimmer";
+import Loading from "./Loading";
 import useRestaurantMenu from "../utils/useRestaurantMenu";
 import RestaurantCategory from "./RestaurantCategory";
 
@@ -11,7 +11,7 @@ const RestaurantMenu = () => {
   const [showIndex, setShowIndex] = useState(null);
 
   if (resInfo === null) {
-    return <Shimmer />;
+    return <Loading />;
   } else {
     const { name, cuisines } = resInfo?.cards[0]?.card?.card?.info;
     const { deliveryTime } = resInfo?.cards[0]?.card?.card?.info.sla;
