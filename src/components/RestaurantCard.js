@@ -7,7 +7,7 @@ const RestaurantCard = ({ resData }) => {
   const { deliveryTime } = resData?.info?.sla;
 
   return (
-    <div className="m-4 w-[250px] h-[300px] overflow-hidden rounded-lg transform transition-transform scale-100 hover:scale-95">
+    <div className="m-4 w-[250px] h-[300px] overflow-hidden rounded-lg transform transition-all duration-200 scale-100 hover:scale-90">
       <img
         className="rounded-xl w-full h-44"
         alt={name}

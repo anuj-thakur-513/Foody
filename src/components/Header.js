@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 import { LOGO_URL } from "../utils/constants";
 import UserContext from "../utils/UserContext";
 
@@ -11,6 +12,10 @@ const Header = () => {
   const loginClickListener = () => {
     setLoginButton(!loginButton);
   };
+
+  // selector hook -> subscribing to the store using this
+  const cartItems = useSelector((store) => store.cart.items);
+  console.log(cartItems);
 
   return (
     <div className="flex justify-between shadow-md">
@@ -32,7 +37,7 @@ const Header = () => {
             <Link to={"/grocery"}>Grocery</Link>
           </li>
           <li className="px-4">
-            <Link to={"/cart"}>Cart</Link>
+            <Link to={"/cart"}>🛒({cartItems.length} items)</Link>
           </li>
           <button className="px-4" onClick={loginClickListener}>
             {loginButton === false ? "Login" : "Logout"}
